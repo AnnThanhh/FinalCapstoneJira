@@ -42,7 +42,9 @@ export default function TaskDetail({}: Props) {
   const comments = useSelector(
     (state: RootState) => state.taskDetailReducer.comments
   );
-  const userLogin:UserLoginApi | undefined = useSelector((state:RootState)=>state.userLoginReducer.userLogin)
+  const userLogin: UserLoginApi | undefined = useSelector(
+    (state: RootState) => state.userLoginReducer.userLogin
+  );
 
   const dispatch: DispatchType = useDispatch();
 
@@ -137,6 +139,13 @@ export default function TaskDetail({}: Props) {
   const handleCommentChange = (index: any, event: any) => {
     const newComment = event.target.value;
     const action = changeCommentAction({ index, newComment });
+    dispatch(action);
+  };
+
+  const handleDeleteTask = () => {
+    const actionApi = removeTaskApi(task.taskId, task.projectId);
+    dispatch(actionApi);
+    const action = closeModalTask(false);
     dispatch(action);
   };
 
@@ -259,19 +268,29 @@ export default function TaskDetail({}: Props) {
                 <Option value="2">new task</Option>
               </Select>
             </div>
-            <div style={{ display: "flex" }}>
-              <div
-                style={{ cursor: "pointer" }}
+            <div
+              key="footer-buttons"
+              style={{ display: "flex", justifyContent: "space-between" }}
+            >
+              <Button
+                key="close"
+                type="primary"
                 onClick={() => {
-                  const actionApi = removeTaskApi(task.taskId, task.projectId);
-                  dispatch(actionApi);
                   const action = closeModalTask(false);
                   dispatch(action);
                 }}
               >
-                <i className="fa fa-trash-alt" />
-                <span style={{ paddingRight: 20 }}> Delete</span>
-              </div>
+                Close
+              </Button>
+              <Button
+                key="delete"
+                type="primary"
+                danger
+                onClick={handleDeleteTask}
+                style={{ marginLeft: 10 }} 
+              >
+                Delete
+              </Button>
             </div>
           </div>
           <div className="container-fluid mt-3">
@@ -340,7 +359,7 @@ export default function TaskDetail({}: Props) {
                 <div className="mt-3">
                   <p>Description</p>
                   <Editor
-                  apiKey="hcm0hmgynoxuu4vff7v7agu0aj4c9r5opgilwqj1ombpuqnc"
+                    apiKey="hcm0hmgynoxuu4vff7v7agu0aj4c9r5opgilwqj1ombpuqnc"
                     value={task?.description}
                     init={{
                       height: 200,
@@ -386,10 +405,10 @@ export default function TaskDetail({}: Props) {
                     style={{ display: "flex" }}
                   >
                     <div className="avatar">
-                        <Avatar
-                          src={userLogin?.avatar}
-                          style={{ width: 40, height: 40 }}
-                        />
+                      <Avatar
+                        src={userLogin?.avatar}
+                        style={{ width: 40, height: 40 }}
+                      />
                     </div>
                     <div className="input-comment">
                       <Input

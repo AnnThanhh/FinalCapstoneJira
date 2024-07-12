@@ -601,7 +601,7 @@ export default function ProjectList({}: Props) {
       <input
         type="text"
         className="s-proj"
-        placeholder="Search project"
+        placeholder="Search project by name"
         value={keyword}
         onChange={handleSearchKeyword}
       />

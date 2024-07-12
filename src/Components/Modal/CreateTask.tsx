@@ -6,7 +6,7 @@ import { DispatchType, RootState } from '../../Redux/configStore';
 import { Priority, Status, TaskFrm, TaskType, changeAssignAction, changeEditorAction, changeEstimateAction, changeInputAction, changePriorityAction, changeProjectIdAction, changeStatusAction, changeTaskTypeAction, changeTimeTrackingRemainingAction, changeTimeTrackingSpentAction, closeModalAction, createTaskApi, getPriorityApi, getStatusApi, getTaskTypeApi } from '../../Redux/reducers/taskReducer';
 import { ProjectApi, getAllProjectAction } from '../../Redux/reducers/projectReducer';
 import { SizeType } from 'antd/es/config-provider/SizeContext';
-import { getUserApi, getUserByProjectIdApi } from '../../Redux/reducers/userReducer';
+import { closeModalEditUser, getUserApi, getUserByProjectIdApi } from '../../Redux/reducers/userReducer';
 import { Member } from '../../Redux/reducers/editProjectReducer';
 
 type Props = {}
@@ -129,6 +129,7 @@ export default function CreateTask({}: Props) {
         e.preventDefault();
         const actionApi = createTaskApi(taskFrm);
         dispatch(actionApi)
+        dispatch(closeModalAction(false));
     }
 
     const renderProjectOptions = () => {
@@ -264,7 +265,8 @@ export default function CreateTask({}: Props) {
                         />
                     </div>
                     <div className='mt-4'>
-                        <button type="submit" className="btn btn-primary">Save</button>
+                        <button type="submit" className="btn btn-primary"
+                        >Save</button>
                         <button type="button" className="btn btn-secondary ms-3"
                             onClick={() => {
                                 const actionClose = closeModalAction(false);

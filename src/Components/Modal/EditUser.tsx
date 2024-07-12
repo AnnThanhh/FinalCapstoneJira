@@ -15,6 +15,7 @@ export default function EditUser({}: Props) {
   const onFinish = (values:any) => {
     const action = editUserApi(values);
     dispatch(action)
+    dispatch(closeModalEditUser(false));
   };
   useEffect(() => {
     form.setFieldsValue({ ...userEdit });

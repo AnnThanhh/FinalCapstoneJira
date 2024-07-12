@@ -6,11 +6,14 @@ import { DispatchType, RootState } from '../../Redux/configStore';
 import { getProjectCategoryAsync } from '../../Redux/reducers/projectCategoryReducer';
 import { changeCategoryIdAction, changeDescAction, changeNameAction, createProjectApi } from '../../Redux/reducers/createProjectReducer';
 import { history } from '../../App';
+import { useNavigate } from 'react-router-dom';
+import { notification } from 'antd';
 
 type Props = {}
 
 export default function NewProject({}: Props) {
   const dispatch: DispatchType = useDispatch();
+  const navigate = useNavigate();
   const { projectCategory } = useSelector((state: RootState) => state.projectCategoryReducer);
   const newProject = useSelector((state:RootState) => state.createProjectReducer.newProject);
 
@@ -44,6 +47,7 @@ export default function NewProject({}: Props) {
     e.preventDefault();
     const actionApi = createProjectApi(newProject);
     dispatch(actionApi)
+    navigate('/project');
   }
 
   useEffect(() => {
