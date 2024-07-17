@@ -155,6 +155,73 @@ body{
   text-decoration: underline;
 }
 
+/* .social-login {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+} */
+
+.facebook-button {
+  width: 48%;
+  background-color: #3b5998;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.google-button {
+  width: 48%;
+  background-color: #db4437;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.facebook-button:hover,
+.google-button:hover {
+  opacity: 0.9;
+}
+
+.or-divider {
+  text-align: center;
+  margin: 20px 0;
+  position: relative;
+}
+
+.or-divider::before,
+.or-divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.or-divider::before {
+  left: 0;
+}
+
+.or-divider::after {
+  right: 0;
+}
+
+
+
 @media (max-width: 576px) {
   .login-box {
     width: 100%;

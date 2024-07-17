@@ -7,6 +7,7 @@ import * as yup from 'yup';
 import { registerAsyncAction } from '../../Redux/reducers/userLoginReducer';
 import { Button, Form, Input } from 'antd';
 import { LockOutlined, MailOutlined, PhoneOutlined, UserOutlined } from '@ant-design/icons';
+import ReactFacebookLogin from 'react-facebook-login';
 
 type Props = {}
 
@@ -19,10 +20,28 @@ export interface UserRegisterFrm {
 
 export default function Register({}: Props) {
   const dispatch:DispatchType = useDispatch();
+  
 
   const onFinish = (values:UserRegisterFrm) => {
     const action = registerAsyncAction(values);
     dispatch(action)
+
+  };
+
+  const responseFacebook = (response: any) => {
+    console.log(response);
+    const { email, name, id } = response;
+    if (email && name && id) {
+      const values: UserRegisterFrm = {
+        email,
+        passWord: 'facebook', 
+        name,
+        phoneNumber: '', 
+      };
+      const action = registerAsyncAction(values);
+      dispatch(action);
+
+    }
   };
 
   return (
@@ -88,6 +107,22 @@ export default function Register({}: Props) {
               Already have an account? <NavLink to="/login">Login now</NavLink>
             </p>
           </div>
+          </Form.Item>
+
+          <h2 className="or-divider">Or</h2>
+
+          <Form.Item>
+            <div className="social-login">
+              <ReactFacebookLogin
+                appId="YOUR_FACEBOOK_APP_ID"
+                autoLoad={false}
+                fields="name,email,picture"
+                callback={responseFacebook}
+                cssClass="facebook-button"
+                textButton="Register with Facebook"
+                icon={<i className="fab fa-facebook-f" style={{ marginRight: 8 }}></i>}
+              />
+            </div>
           </Form.Item>
         </Form>
       </div>
