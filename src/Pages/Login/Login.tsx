@@ -7,8 +7,7 @@ import { loginAsyncAction } from "../../Redux/reducers/userLoginReducer";
 import * as yup from 'yup';
 import { Button, Form, Input } from "antd";
 import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
-import ReactFacebookLogin from "react-facebook-login";
-import { GoogleLogin } from 'react-google-login';
+// import ReactFacebookLogin from "react-facebook-login";
 
 type Props = {};
 
@@ -35,17 +34,6 @@ export default function Login({}: Props) {
     const action = loginAsyncAction(values);
     dispatch(action);
   };
-
-  // const responseGoogle = (response: any) => {
-  //   console.log(response);
-  //   // Xử lý đăng nhập thành công với Google
-  //   const values = {
-  //     email: response.profileObj.email,
-  //     passWord: "google", // hoặc bạn có thể quản lý mật khẩu riêng cho người dùng Google
-  //   };
-  //   const action = loginAsyncAction(values);
-  //   dispatch(action);
-  // };
 
   return (
     <div className="login">
@@ -92,7 +80,7 @@ export default function Login({}: Props) {
 
           <h2 className="or-divider">Or</h2>
 
-          <Form.Item>
+          {/* <Form.Item>
             <div className="social-login">
               <ReactFacebookLogin
                 appId="445110674937027"
@@ -101,16 +89,9 @@ export default function Login({}: Props) {
                 cssClass="facebook-button"
                 icon={<i className="fab fa-facebook-f" style={{ marginRight: 8 }}></i>}
               />
-               {/* <GoogleLogin
-                clientId="YOUR_GOOGLE_CLIENT_ID" // Thay YOUR_GOOGLE_CLIENT_ID bằng Client ID của bạn
-                buttonText="Google"
-                onSuccess={responseGoogle}
-                onFailure={responseGoogle}
-                cookiePolicy={'single_host_origin'}
-                className="google-button"
-              /> */}
+
             </div>
-          </Form.Item>
+          </Form.Item> */}
         </Form>
       </div>
     </div>

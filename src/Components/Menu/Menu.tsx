@@ -1,10 +1,13 @@
 import React from 'react'
 import { NavLink} from 'react-router-dom'
+import { openModalAction } from '../../Redux/reducers/taskReducer';
+import { DispatchType } from '../../Redux/configStore';
+import { useDispatch } from 'react-redux';
 
 type Props = {}
 
 export default function Menu({}: Props) {
-  
+  const dispatch:DispatchType = useDispatch();
   return (
     <div className="menu">
         <div className="account">

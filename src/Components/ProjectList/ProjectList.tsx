@@ -40,6 +40,7 @@ import {
   removeUserFromProjectApi,
 } from "../../Redux/reducers/userReducer";
 import { NavLink } from "react-router-dom";
+import { openModalAction } from "../../Redux/reducers/taskReducer";
 
 type Props = {};
 
@@ -598,13 +599,27 @@ export default function ProjectList({}: Props) {
     <>
       <Header title="Project Management" />
       <h4 className="title">Project Management</h4>
-      <input
-        type="text"
-        className="s-proj"
-        placeholder="Search project by name"
-        value={keyword}
-        onChange={handleSearchKeyword}
-      />
+      <div className="d-flex align-items-center">
+        <input
+          type="text"
+          className="s-proj my-3"
+          placeholder="Search project by name"
+          value={keyword}
+          onChange={handleSearchKeyword}
+        />
+        <button
+          className="btn py-3"
+          style={{ cursor: "pointer" }}
+          onClick={() => {
+            const actionOpen = openModalAction(true);
+            dispatch(actionOpen);
+          }}
+        >
+          <i className="fa fa-plus text-black" style={{ fontSize: 18 }} />
+          <span className="ms-2">Create Task</span>
+        </button>
+      </div>
+
       <Table
         className="resp-table"
         columns={columns}

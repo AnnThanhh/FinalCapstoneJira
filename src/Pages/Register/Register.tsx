@@ -7,7 +7,7 @@ import * as yup from 'yup';
 import { registerAsyncAction } from '../../Redux/reducers/userLoginReducer';
 import { Button, Form, Input } from 'antd';
 import { LockOutlined, MailOutlined, PhoneOutlined, UserOutlined } from '@ant-design/icons';
-import ReactFacebookLogin from 'react-facebook-login';
+// import ReactFacebookLogin from 'react-facebook-login';
 
 type Props = {}
 
@@ -111,7 +111,7 @@ export default function Register({}: Props) {
 
           <h2 className="or-divider">Or</h2>
 
-          <Form.Item>
+          {/* <Form.Item>
             <div className="social-login">
               <ReactFacebookLogin
                 appId="YOUR_FACEBOOK_APP_ID"
@@ -123,7 +123,7 @@ export default function Register({}: Props) {
                 icon={<i className="fab fa-facebook-f" style={{ marginRight: 8 }}></i>}
               />
             </div>
-          </Form.Item>
+          </Form.Item> */}
         </Form>
       </div>
     </div>

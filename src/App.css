@@ -96,7 +96,7 @@ body{
   align-items: center;
   width: 100%;
   height: 100vh;
-  background-color: #0747a6;
+  background-color: #FFC7C7;
 }
 .login-box {
   position: relative;
@@ -107,7 +107,7 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: #F6F6F6;
 }
 
 .login-box .form-antd h2 {
@@ -124,7 +124,7 @@ body{
 .login-box button {
   width: 100%;
   height: 40px;
-  background: #0747a6;
+  background: #FFC7C7;
   border: none;
   outline: none;
   border-radius: 40px;
@@ -242,7 +242,7 @@ body{
   align-items: center;
   width: 100%;
   height: 100vh;
-  background-color: #0747a6;
+  background-color: #FFC7C7;
 }
 .register-box {
   position: relative;
@@ -264,7 +264,7 @@ body{
 .register-box button {
   width: 100%;
   height: 40px;
-  background: #0747a6;
+  background: #FFC7C7;
   border: none;
   outline: none;
   border-radius: 40px;
@@ -351,7 +351,6 @@ body{
   height: 100vh;
   position: fixed;
   z-index: 9;
-  margin-left: 3%;
   background-color: #f4f5f7;
 }
 
